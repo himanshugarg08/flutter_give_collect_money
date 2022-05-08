@@ -1,0 +1,30 @@
+name: flutter_give_collect_money
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.1 <3.0.0"
+
+dependencies:
+  cupertino_icons: ^1.0.2
+  dotted_border: ^2.0.0+2
+  fitted_text_field_container: ^2.0.0
+  flutter:
+    sdk: flutter
+  lottie: ^1.2.2
+  staggered_grid_view_flutter: ^0.0.4
+
+dev_dependencies:
+  flutter_lints: ^1.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/
