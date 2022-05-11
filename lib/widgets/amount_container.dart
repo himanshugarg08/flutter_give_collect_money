@@ -23,7 +23,7 @@ class AmountContainer extends StatelessWidget {
   }
 
   double cursorOffset() {
-    return (22 * (amount.length - 1)) / 10;
+    return (8 * (amount.length - 1)) / 10;
   }
 
   double rowOffset() {
@@ -33,9 +33,10 @@ class AmountContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final duration = 200.ms;
+    const fontSize = 40.0;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.max,
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 12.0, bottom: 48.0),
@@ -45,10 +46,10 @@ class AmountContainer extends StatelessWidget {
                 offset: const Offset(15, 0),
                 child: AnimatedContainer(
                   duration: duration,
-                  width:
-                      calcTextSize(amount.join(), const TextStyle(fontSize: 32))
-                              .width +
-                          50,
+                  width: calcTextSize(amount.join(),
+                              const TextStyle(fontSize: fontSize))
+                          .width +
+                      50,
                   child: Row(
                     children: [
                       ...amount.map((e) {
@@ -64,7 +65,7 @@ class AmountContainer extends StatelessWidget {
                           child: Text(
                             e,
                             style: const TextStyle(
-                              fontSize: 32,
+                              fontSize: fontSize,
                               fontWeight: FontWeight.bold,
                             ),
                             overflow: TextOverflow.fade,
@@ -78,17 +79,17 @@ class AmountContainer extends StatelessWidget {
               if (showCursor)
                 AnimatedContainer(
                   duration: duration,
-                  width:
-                      calcTextSize(amount.join(), const TextStyle(fontSize: 32))
-                              .width +
-                          20 +
-                          cursorOffset(),
+                  width: calcTextSize(amount.join(),
+                              const TextStyle(fontSize: fontSize))
+                          .width +
+                      20 +
+                      cursorOffset(),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       AnimatedCursor(
-                        height: calcTextSize(
-                                amount.join(), const TextStyle(fontSize: 32))
+                        height: calcTextSize(amount.join(),
+                                const TextStyle(fontSize: fontSize))
                             .height,
                       ),
                     ],

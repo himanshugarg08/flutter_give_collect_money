@@ -66,6 +66,16 @@ class _KeyboardPadState extends State<KeyboardPad>
     });
   }
 
+  void addValueToAmount(String value) {
+    int amountListLength = amount.length;
+
+    if (amountListLength < 5 || (amount[amountListLength - 3] != '.')) {
+      setState(() {
+        amount.add(value);
+      });
+    }
+  }
+
   @override
   void dispose() {
     animationController.dispose();
@@ -151,6 +161,7 @@ class _KeyboardPadState extends State<KeyboardPad>
                           ),
                         ),
                       ),
+                      verticalSpace(16),
                     ],
                   ),
                 )
@@ -167,7 +178,7 @@ class _KeyboardPadState extends State<KeyboardPad>
         onTap: () {
           if (amount.first != amount.last) {
             if (amount.length >= 3) {
-              if (amount[1] == '0' && amount[2] == '.') {
+              if (amount[1] == '0' && amount[2] == '.' && amount.length == 3) {
                 amount.removeLast();
               }
             }
@@ -216,9 +227,7 @@ class _KeyboardPadState extends State<KeyboardPad>
       return GestureDetector(
         onTap: () {
           if (amount.first != amount.last && !isAmountLimitReached()) {
-            setState(() {
-              amount.add("0");
-            });
+            addValueToAmount("0");
           }
         },
         child: ClipRRect(
@@ -245,14 +254,10 @@ class _KeyboardPadState extends State<KeyboardPad>
         onTap: () {
           if (!amount.contains('.') && !isAmountLimitReached()) {
             if (amount.first != amount.last) {
-              setState(() {
-                amount.add(".");
-              });
+              addValueToAmount(".");
             } else {
-              setState(() {
-                amount.add("0");
-                amount.add(".");
-              });
+              addValueToAmount("0");
+              addValueToAmount(".");
             }
           }
         },
@@ -274,9 +279,7 @@ class _KeyboardPadState extends State<KeyboardPad>
     return GestureDetector(
       onTap: () {
         if (!isAmountLimitReached()) {
-          setState(() {
-            amount.add(value);
-          });
+          addValueToAmount(value);
         }
       },
       child: Container(
