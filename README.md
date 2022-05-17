@@ -1,6 +1,8 @@
 # flutter_give_collect_money
 
-A new Flutter project.
+GiveYouCash UI interaction in Flutter.
+Dribble : [GIVE-YOU-CASH](https://dribbble.com/shots/12517549-GIVE-YOU-CASH)
+Youtube : [GIVE-YOU-CASH-YouTube](https://www.youtube.com/watch?v=uKlp8snELaU)
 
 ## Getting Started
 
